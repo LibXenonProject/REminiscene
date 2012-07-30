@@ -1,0 +1,15 @@
+As promised, I give you REminiscene engine
+
+copy "DATA" folder from you flashback CD and rename it into "remini"
+
+Need to fix/add :
+
+- Jerky sound
+- Save/load using controller
+
+Hope you will enjoy this little contrib ;)
+
+Thanks to lantus for porting SDL on the libxenon :)
+
+
+-- MagicSeb on LibXenon.org Forum
