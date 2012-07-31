@@ -20,6 +20,7 @@
 #include "game.h"
 #include "systemstub.h"
 #include "xenon.h"
+#include "mount.h"
 
 static const char *USAGE =
 	"REminiscence - Flashback Interpreter\n"
