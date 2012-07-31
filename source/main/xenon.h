@@ -12,3 +12,4 @@
 #include <ppc/timebase.h>
 #include <time/time.h>
 #include <diskio/ata.h>
+#include <elf/elf.h>
