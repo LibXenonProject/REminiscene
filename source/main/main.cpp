@@ -20,6 +20,7 @@
 #include "game.h"
 #include "systemstub.h"
 #include "xenon.h"
+#include "mount.h"
 
 static const char *USAGE =
 	"REminiscence - Flashback Interpreter\n"
@@ -84,6 +85,15 @@ static Language detectLanguage(FileSystem *fs) {
 
 #undef main
 int main(int argc, char *argv[]) {
+	
+	char *basepath = (char*)malloc(256);
+	
+	if(argc != 0 && argv[0]){
+		char *tmp = argv_GetFilepath(argv[0]);
+		sprintf(basepath,"%s/remini",tmp);
+	} else {
+		basepath = "uda0:/remini";
+	}
 
 	xenon_make_it_faster(XENON_SPEED_FULL);
     xenos_init(VIDEO_MODE_AUTO);
@@ -93,10 +103,18 @@ int main(int argc, char *argv[]) {
     
     usb_init();
     usb_do_poll();
+    
+    xenon_ata_init();
+    xenon_atapi_init();
+    
+    mount_all_devices();
+    findDevices();
+    
 	xenon_sound_init();
 
-	const char *dataPath = "uda:/remini";
-	const char *savePath = "uda:/remini";
+	const char *dataPath = basepath;
+	const char *savePath = basepath;
+
 	const char *levelNum = "0";
 	for (int i = 1; i < argc; ++i) {
 		bool opt = false;
